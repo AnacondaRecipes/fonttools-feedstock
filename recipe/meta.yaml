@@ -15,13 +15,18 @@ build:
   noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  entry_points:
+    - fonttools = fontTools.__main__:main
+    - ttx = fontTools.ttx:main
+    - pyftsubset = fontTools.subset:main
+    - pyftmerge = fontTools.merge:main
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - setuptools
   run:
-    - python
+    - python >=3.6
     - brotli
     - unicodedata2
     - munkres
