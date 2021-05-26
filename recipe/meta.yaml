@@ -25,6 +25,8 @@ requirements:
   host:
     - python >=3.6
     - setuptools
+    - pip
+    - wheel
   run:
     - python >=3.6
     - brotli
@@ -43,7 +45,6 @@ test:
     - pyftsubset --help
     # pyftmerge has no help option
     # pyftinspect requires gtk
-
 
 about:
   home: https://github.com/fonttools/fonttools
