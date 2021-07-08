@@ -1,6 +1,6 @@
 {% set name = "fonttools" %}
-{% set version = "4.24.4" %}
-{% set sha256 = "9ff6e079fb4ee7857dc608a2b54fe9e4312d076303d042b25046aee5a20e22cd" %}
+{% set version = "4.25.0" %}
+{% set sha256 = "618f1ecb7f328c17164e4c9a11fdf8945164eb764ff11a2a17a368720ecc892e" %}
 
 package:
   name: {{ name|lower }}
@@ -29,7 +29,9 @@ requirements:
     - wheel
   run:
     - python >=3.6
-    - brotli
+    # for fontTools.sfnt and fontTools.woff2: to compress/uncompress
+    # WOFF 1.0 and WOFF 2.0 webfonts.
+    - brotli >=1.0.1
     # 5/17/2021: the unicodedata2 extension module doesn't work on PyPy.
     # Python 3.9 already has Unicode 13.0, so the backport is not needed.
     - unicodedata2 >=13.0.0  # [py<39 and (python_impl != "pypy")]
