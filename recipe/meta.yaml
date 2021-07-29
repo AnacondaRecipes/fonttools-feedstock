@@ -41,12 +41,15 @@ test:
   imports:
     - fontTools
     - fontTools.ttLib
+  requires:
+    - pip
   commands:
     - fonttools subset --help
     - ttx -h
     - pyftsubset --help
     # pyftmerge has no help option
     # pyftinspect requires gtk
+    - pip check
 
 about:
   home: https://github.com/fonttools/fonttools
