@@ -1,6 +1,6 @@
 {% set name = "fonttools" %}
-{% set version = "4.25.0" %}
-{% set sha256 = "618f1ecb7f328c17164e4c9a11fdf8945164eb764ff11a2a17a368720ecc892e" %}
+{% set version = "4.49.0" %}
+{% set sha256 = "90f9ed4782e756e15a8603343d33adc13399306a963f55f8c8f2762a00a82f01" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,6 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
@@ -23,12 +22,12 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - setuptools
     - pip
     - wheel
   run:
-    - python >=3.6
+    - python
     # for fontTools.sfnt and fontTools.woff2: to compress/uncompress
     # WOFF 1.0 and WOFF 2.0 webfonts.
     - brotli >=1.0.1
