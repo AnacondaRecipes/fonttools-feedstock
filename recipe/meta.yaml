@@ -23,6 +23,7 @@ build:
 requirements:
   host:
     - python
+    - cython
     - setuptools
     - pip
     - wheel
@@ -33,7 +34,7 @@ requirements:
     - brotli >=1.0.1
     # 5/17/2021: the unicodedata2 extension module doesn't work on PyPy.
     # Python 3.9 already has Unicode 13.0, so the backport is not needed.
-    #- unicodedata2 >=15.1.0  # [py<313]
+    - unicodedata2 >=14.0.0 # [py<311]
   run_constrained:
     - lxml >=4.0
     - lz4 >=1.7.4.2
