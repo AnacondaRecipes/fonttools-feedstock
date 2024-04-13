@@ -62,8 +62,8 @@ about:
     supports TrueType, OpenType, AFM and to an extent Type 1 and some
     Mac-specific formats. The project has a BSD-style open-source licence.
 
-  doc_url: https://fonttools.readthedocs.io/en/latest/
-  dev_url: https://fonttools.readthedocs.io/
+  doc_url: https://fonttools.readthedocs.io/
+  dev_url: https://github.com/fonttools/fonttools
 
 extra:
   recipe-maintainers:
