@@ -19,8 +19,12 @@ build:
     - ttx = fontTools.ttx:main
     - pyftsubset = fontTools.subset:main
     - pyftmerge = fontTools.merge:main
+  script_env:
+    - FONTTOOLS_WITH_CYTHON=1
 
 requirements:
+  build:
+    - {{ compiler('c') }}
   host:
     - python
     - cython
@@ -46,6 +50,8 @@ test:
     - fonttools subset --help
     - ttx -h
     - pyftsubset --help
+    - echo $FONTTOOLS_WITH_CYTHON
+    - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
     # pyftmerge has no help option
     # pyftinspect requires gtk
   requires:
