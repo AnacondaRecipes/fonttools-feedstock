@@ -1,6 +1,6 @@
 {% set name = "fonttools" %}
-{% set version = "4.25.0" %}
-{% set sha256 = "618f1ecb7f328c17164e4c9a11fdf8945164eb764ff11a2a17a368720ecc892e" %}
+{% set version = "4.51.0" %}
+{% set sha256 = "85aa9cdf030dd82f28ca584a8814de265150b46bfc65067343a631773efa885a" %}
 
 package:
   name: {{ name|lower }}
@@ -12,41 +12,52 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - fonttools = fontTools.__main__:main
     - ttx = fontTools.ttx:main
     - pyftsubset = fontTools.subset:main
     - pyftmerge = fontTools.merge:main
+  script_env:
+    - FONTTOOLS_WITH_CYTHON=1
 
 requirements:
+  build:
+    - {{ compiler('c') }}
   host:
-    - python >=3.6
+    - python
+    - cython
     - setuptools
     - pip
     - wheel
   run:
-    - python >=3.6
-    # for fontTools.sfnt and fontTools.woff2: to compress/uncompress
-    # WOFF 1.0 and WOFF 2.0 webfonts.
+    - python
     - brotli >=1.0.1
-    # 5/17/2021: the unicodedata2 extension module doesn't work on PyPy.
-    # Python 3.9 already has Unicode 13.0, so the backport is not needed.
-    - unicodedata2 >=13.0.0  # [py<39 and (python_impl != "pypy")]
-    - munkres
+    - unicodedata2 >=15.1.0 # [py<313]
+  run_constrained:
+    - fs >=2.2.0,<3
+    - lxml >=4.0
+    - zopfli >=0.1.4
+    - lz4 >=1.7.4.2
+    - skia-pathops >=0.5.0
+    - uharfbuzz >=0.23.0
 
 test:
   imports:
     - fontTools
     - fontTools.ttLib
   commands:
+    - pip check
     - fonttools subset --help
     - ttx -h
     - pyftsubset --help
+    - echo $FONTTOOLS_WITH_CYTHON
+    - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
     # pyftmerge has no help option
     # pyftinspect requires gtk
+  requires:
+    - pip
 
 about:
   home: https://github.com/fonttools/fonttools
@@ -62,7 +73,7 @@ about:
     supports TrueType, OpenType, AFM and to an extent Type 1 and some
     Mac-specific formats. The project has a BSD-style open-source licence.
 
-  doc_url: https://groups.google.com/forum/#!forum/fonttools
+  doc_url: https://fonttools.readthedocs.io/
   dev_url: https://github.com/fonttools/fonttools
 
 extra:
