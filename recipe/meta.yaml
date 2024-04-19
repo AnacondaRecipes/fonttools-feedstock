@@ -36,7 +36,9 @@ requirements:
     - brotli >=1.0.1
     - unicodedata2 >=15.1.0 # [py<313]
   run_constrained:
+    - fs >=2.2.0,< 3
     - lxml >=4.0
+    - zopfli >=0.1.4
     - lz4 >=1.7.4.2
     - skia-pathops >=0.5.0
     - uharfbuzz >=0.23.0
