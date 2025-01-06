@@ -1,6 +1,6 @@
 {% set name = "fonttools" %}
-{% set version = "4.51.0" %}
-{% set sha256 = "85aa9cdf030dd82f28ca584a8814de265150b46bfc65067343a631773efa885a" %}
+{% set version = "4.55.3" %}
+{% set sha256 = "3983313c2a04d6cc1fe9251f8fc647754cf49a61dac6cb1e7249ae67afaafc45" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - fonttools = fontTools.__main__:main
@@ -33,20 +33,21 @@ requirements:
     - wheel
   run:
     - python
-    - brotli >=1.0.1
+    - brotli-python >=1.0.1
     - unicodedata2 >=15.1.0 # [py<313]
   run_constrained:
-    - fs >=2.2.0,<3
-    - lxml >=4.0
-    - zopfli >=0.1.4
-    - lz4 >=1.7.4.2
-    - skia-pathops >=0.5.0
-    - uharfbuzz >=0.23.0
+    - fs >=2.2.0,<3   # extra:ufo
+    - lxml >=4.0   # extra:lxml
+    - zopfli >=0.1.4   # extra:woff
+    - lz4 >=1.7.4.2   # extra:graphite
+    - skia-pathops >=0.5.0   # extra:pathops
+    - uharfbuzz >=0.23.0   # extra:repacker
 
 test:
   imports:
     - fontTools
     - fontTools.ttLib
+    - fontTools.cffLib
   commands:
     - pip check
     - fonttools subset --help
