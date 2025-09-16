@@ -1,6 +1,6 @@
 {% set name = "fonttools" %}
-{% set version = "4.55.3" %}
-{% set sha256 = "c8c250586066a66ea8a26cc4b06bce5ec6fb9b2bf4afd7aff9d509ed7bfd5fcd" %}
+{% set version = "4.59.2" %}
+{% set sha256 = "9fea8a71aeef68a0f89369d449ccae7c2f3621fbeea1b5cd176607cc0a63b5e4" %}
 
 package:
   name: {{ name|lower }}
@@ -34,14 +34,14 @@ requirements:
   run:
     - python
     - brotli-python >=1.0.1
-    - unicodedata2 >=15.1.0 # [py<313]
+    - unicodedata2 >=15.1.0  # [py<313]
   run_constrained:
-    - fs >=2.2.0,<3   # extra:ufo
-    - lxml >=4.0   # extra:lxml
-    - zopfli >=0.1.4   # extra:woff
-    - lz4 >=1.7.4.2   # extra:graphite
-    - skia-pathops >=0.5.0   # extra:pathops
-    - uharfbuzz >=0.23.0   # extra:repacker
+    - fs >=2.2.0,<3  # extra:ufo
+    - lxml >=4.0
+    - zopfli >=0.1.4
+    - lz4 >=1.7.4.2
+    - skia-pathops >=0.5.0
+    - uharfbuzz >=0.23.0
 
 test:
   imports:
@@ -65,8 +65,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'fontTools is a library for manipulating fonts, written in Python.'
-
+  summary: fontTools is a library for manipulating fonts, written in Python.
   description: |
     fontTools is a library for manipulating fonts, written in Python. The
     project includes the TTX tool, that can convert TrueType and OpenType
