@@ -1,18 +1,17 @@
 {% set name = "fonttools" %}
 {% set version = "4.59.2" %}
-{% set sha256 = "9fea8a71aeef68a0f89369d449ccae7c2f3621fbeea1b5cd176607cc0a63b5e4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 9fea8a71aeef68a0f89369d449ccae7c2f3621fbeea1b5cd176607cc0a63b5e4
 
 build:
   number: 0
+  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - fonttools = fontTools.__main__:main
@@ -24,13 +23,13 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
   host:
+    - pip
     - python
     - cython
     - setuptools
-    - pip
-    - wheel
   run:
     - python
     - brotli-python >=1.0.1
@@ -44,10 +43,15 @@ requirements:
     - uharfbuzz >=0.23.0
 
 test:
+  source_files:
+    - Tests
   imports:
     - fontTools
     - fontTools.ttLib
     - fontTools.cffLib
+  requires:
+    - pip
+    - pytest
   commands:
     - pip check
     - fonttools subset --help
@@ -55,10 +59,9 @@ test:
     - pyftsubset --help
     - echo $FONTTOOLS_WITH_CYTHON
     - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
+    - pytest
     # pyftmerge has no help option
     # pyftinspect requires gtk
-  requires:
-    - pip
 
 about:
   home: https://github.com/fonttools/fonttools
@@ -71,9 +74,8 @@ about:
     project includes the TTX tool, that can convert TrueType and OpenType
     fonts to and from an XML text format, which is also called TTX. It
     supports TrueType, OpenType, AFM and to an extent Type 1 and some
-    Mac-specific formats. The project has a BSD-style open-source licence.
-
-  doc_url: https://fonttools.readthedocs.io/
+    Mac-specific formats. The project has a BSD-style open-source license.
+  doc_url: https://fonttools.readthedocs.io
   dev_url: https://github.com/fonttools/fonttools
 
 extra:
