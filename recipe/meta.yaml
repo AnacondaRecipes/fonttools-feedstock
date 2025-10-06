@@ -33,12 +33,18 @@ requirements:
   run:
     - python
   run_constrained:
+    # lxml
     - lxml >=4.0
+    # woff
     - brotli-python >=1.0.1
     - zopfli >=0.1.4
+    # unicode
     - unicodedata2 >=15.1.0  # [py<313]
+    # graphite
     - lz4 >=1.7.4.2
+    # pathops
     - skia-pathops >=0.5.0
+    # repacker
     - uharfbuzz >=0.23.0
 
 test:
