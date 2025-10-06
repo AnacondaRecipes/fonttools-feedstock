@@ -32,12 +32,11 @@ requirements:
     - setuptools
   run:
     - python
-    - brotli-python >=1.0.1
-    - unicodedata2 >=15.1.0  # [py<313]
   run_constrained:
-    - fs >=2.2.0,<3  # extra:ufo
     - lxml >=4.0
+    - brotli-python >=1.0.1
     - zopfli >=0.1.4
+    - unicodedata2 >=15.1.0  # [py<313]
     - lz4 >=1.7.4.2
     - skia-pathops >=0.5.0
     - uharfbuzz >=0.23.0
@@ -47,11 +46,34 @@ test:
     - Tests
   imports:
     - fontTools
-    - fontTools.ttLib
     - fontTools.cffLib
+    - fontTools.colorLib
+    - fontTools.config
+    - fontTools.cu2qu
+    - fontTools.designspaceLib
+    - fontTools.encodings
+    - fontTools.feaLib
+    - fontTools.merge
+    - fontTools.mtiLib
+    - fontTools.otlLib
+    - fontTools.otlLib.optimize
+    - fontTools.pens
+    - fontTools.qu2cu
+    - fontTools.subset
+    - fontTools.svgLib
+    - fontTools.svgLib.path
+    - fontTools.t1Lib
+    - fontTools.ttLib
+    - fontTools.ttLib.tables
+    - fontTools.ufoLib
+    - fontTools.unicodedata
+    - fontTools.varLib
+    - fontTools.varLib.avar
+    - fontTools.varLib.instancer
+    - fontTools.voltLib
   requires:
     - pip
-    - pytest
+    - pytest >=7.0.0,!=8.0.1,!=8.0.2
   commands:
     - pip check
     - fonttools subset --help
@@ -59,7 +81,7 @@ test:
     - pyftsubset --help
     - echo $FONTTOOLS_WITH_CYTHON
     - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
-    - pytest
+    - pytest -v Tests/
     # pyftmerge has no help option
     # pyftinspect requires gtk
 
