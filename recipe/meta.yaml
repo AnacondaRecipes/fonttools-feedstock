@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.59.2" %}
+{% set version = "4.60.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 9fea8a71aeef68a0f89369d449ccae7c2f3621fbeea1b5cd176607cc0a63b5e4
+  sha256: 520d2c993ffd386716441d19a1ca65020c54741ceb771c2d2a2557156c12010d
 
 build:
   number: 0
@@ -32,14 +32,19 @@ requirements:
     - setuptools
   run:
     - python
-    - brotli-python >=1.0.1
-    - unicodedata2 >=15.1.0  # [py<313]
   run_constrained:
-    - fs >=2.2.0,<3  # extra:ufo
+    # lxml
     - lxml >=4.0
+    # woff
+    - brotli-python >=1.0.1
     - zopfli >=0.1.4
+    # unicode
+    - unicodedata2 >=15.1.0  # [py<313]
+    # graphite
     - lz4 >=1.7.4.2
+    # pathops
     - skia-pathops >=0.5.0
+    # repacker
     - uharfbuzz >=0.23.0
 
 test:
@@ -47,11 +52,34 @@ test:
     - Tests
   imports:
     - fontTools
-    - fontTools.ttLib
     - fontTools.cffLib
+    - fontTools.colorLib
+    - fontTools.config
+    - fontTools.cu2qu
+    - fontTools.designspaceLib
+    - fontTools.encodings
+    - fontTools.feaLib
+    - fontTools.merge
+    - fontTools.mtiLib
+    - fontTools.otlLib
+    - fontTools.otlLib.optimize
+    - fontTools.pens
+    - fontTools.qu2cu
+    - fontTools.subset
+    - fontTools.svgLib
+    - fontTools.svgLib.path
+    - fontTools.t1Lib
+    - fontTools.ttLib
+    - fontTools.ttLib.tables
+    - fontTools.ufoLib
+    - fontTools.unicodedata
+    - fontTools.varLib
+    - fontTools.varLib.avar
+    - fontTools.varLib.instancer
+    - fontTools.voltLib
   requires:
     - pip
-    - pytest
+    - pytest >=7.0.0,!=8.0.1,!=8.0.2
   commands:
     - pip check
     - fonttools subset --help
@@ -59,7 +87,7 @@ test:
     - pyftsubset --help
     - echo $FONTTOOLS_WITH_CYTHON
     - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
-    - pytest
+    - pytest -v Tests/
     # pyftmerge has no help option
     # pyftinspect requires gtk
 
