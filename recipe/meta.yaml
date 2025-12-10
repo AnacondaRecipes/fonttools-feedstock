@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.60.1" %}
+{% set version = "4.61.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,10 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 520d2c993ffd386716441d19a1ca65020c54741ceb771c2d2a2557156c12010d
+  sha256: fdbc3011b038a4ee8a8dabb3226750460b56238c768e41e751291cc0ec79f1e7
 
 build:
   number: 0
-  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - fonttools = fontTools.__main__:main
@@ -20,6 +19,7 @@ build:
     - pyftmerge = fontTools.merge:main
   script_env:
     - FONTTOOLS_WITH_CYTHON=1
+  skip: true  # [py<310]
 
 requirements:
   build:
@@ -39,13 +39,13 @@ requirements:
     - brotli-python >=1.0.1
     - zopfli >=0.1.4
     # unicode
-    - unicodedata2 >=15.1.0  # [py<313]
+    - unicodedata2 >=17.0.0  # [py<=314]
     # graphite
     - lz4 >=1.7.4.2
     # pathops
     - skia-pathops >=0.5.0
     # repacker
-    - uharfbuzz >=0.23.0
+    - uharfbuzz >=0.45.0
 
 test:
   source_files:
@@ -95,7 +95,9 @@ about:
   home: https://github.com/fonttools/fonttools
   license: MIT
   license_family: MIT
-  license_file: LICENSE
+  license_file: 
+    - LICENSE
+    - LICENSE.external
   summary: fontTools is a library for manipulating fonts, written in Python.
   description: |
     fontTools is a library for manipulating fonts, written in Python. The
