@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.61.0" %}
+{% set version = "4.62.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: fdbc3011b038a4ee8a8dabb3226750460b56238c768e41e751291cc0ec79f1e7
+  sha256: 9207dc3e2a8e3212986b1cdbe0696f6cebcf1a1d6de93cce11c2d85afb2a35dc
 
 build:
   number: 0
@@ -95,7 +95,7 @@ about:
   home: https://github.com/fonttools/fonttools
   license: MIT
   license_family: MIT
-  license_file: 
+  license_file:
     - LICENSE
     - LICENSE.external
   summary: fontTools is a library for manipulating fonts, written in Python.
