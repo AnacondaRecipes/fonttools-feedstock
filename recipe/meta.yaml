@@ -36,7 +36,8 @@ requirements:
     # lxml
     - lxml >=4.0
     # woff
-    - brotli-python >=1.0.1
+    - brotli-python >=1.0.1  # [python_impl == cpython]
+    - brotlicffi >=0.8.0  # [python_impl != cpython]
     - zopfli >=0.1.4
     # unicode
     - unicodedata2 >=17.0.0  # [py<=314]
