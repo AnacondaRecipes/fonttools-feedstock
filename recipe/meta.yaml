@@ -52,6 +52,7 @@ requirements:
 test:
   source_files:
     - Tests
+    - MetaTools
   imports:
     - fontTools
     - fontTools.cffLib
