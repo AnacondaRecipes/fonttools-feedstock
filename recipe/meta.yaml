@@ -53,6 +53,7 @@ test:
   source_files:
     - Tests
     - MetaTools
+    - Doc
   imports:
     - fontTools
     - fontTools.cffLib
