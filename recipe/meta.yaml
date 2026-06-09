@@ -54,6 +54,7 @@ test:
     - Tests
     - MetaTools
     - Doc
+    - Lib
   imports:
     - fontTools
     - fontTools.cffLib
