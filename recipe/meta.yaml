@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.62.1" %}
+{% set version = "4.63.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 9207dc3e2a8e3212986b1cdbe0696f6cebcf1a1d6de93cce11c2d85afb2a35dc
+  sha256: fa9b285d407536e620b02365adb2c911d9d93237ea66404dfbbeb197199b9c8e
 
 build:
   number: 0
@@ -28,8 +28,9 @@ requirements:
   host:
     - pip
     - python
-    - cython
+    - wheel
     - setuptools
+    - cython
   run:
     - python
   run_constrained:
@@ -51,6 +52,9 @@ requirements:
 test:
   source_files:
     - Tests
+    - MetaTools
+    - Doc
+    - Lib
   imports:
     - fontTools
     - fontTools.cffLib
