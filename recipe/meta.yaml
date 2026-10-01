@@ -41,7 +41,7 @@ requirements:
     - brotlicffi >=0.8.0  # [python_impl != cpython]
     - zopfli >=0.1.4
     # unicode
-    - unicodedata2 >=17.0.0  # [py<=314]
+    - unicodedata2 >=18.0.0  # [py<=315]
     # graphite
     - lz4 >=1.7.4.2
     # pathops
