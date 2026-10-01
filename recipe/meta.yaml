@@ -19,7 +19,7 @@ build:
     - pyftmerge = fontTools.merge:main
   script_env:
     - FONTTOOLS_WITH_CYTHON=1
-  skip: true  # [py<310]
+  skip: true  # [py<311]
 
 requirements:
   build:
