@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.65.0" %}
+{% set version = "4.66.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: dd5d897b3e20a4f7655ad948b26f5ca7758f37f601e4ad930d8093ee9d60beb9
+  sha256: dcb2ff59d87e63a9c0f0d618210cbac976540b348c04fbcf5b45497561fa8015
 
 build:
   number: 0
