@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.63.0" %}
+{% set version = "4.66.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: fa9b285d407536e620b02365adb2c911d9d93237ea66404dfbbeb197199b9c8e
+  sha256: dcb2ff59d87e63a9c0f0d618210cbac976540b348c04fbcf5b45497561fa8015
 
 build:
   number: 0
@@ -19,7 +19,7 @@ build:
     - pyftmerge = fontTools.merge:main
   script_env:
     - FONTTOOLS_WITH_CYTHON=1
-  skip: true  # [py<310]
+  skip: true  # [py<311]
 
 requirements:
   build:
@@ -41,7 +41,7 @@ requirements:
     - brotlicffi >=0.8.0  # [python_impl != cpython]
     - zopfli >=0.1.4
     # unicode
-    - unicodedata2 >=17.0.0  # [py<=314]
+    - unicodedata2 >=18.0.0  # [py<=315]
     # graphite
     - lz4 >=1.7.4.2
     # pathops
