@@ -2,7 +2,7 @@
 {% set version = "4.67.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
@@ -92,7 +92,7 @@ test:
     - pyftsubset --help
     - echo $FONTTOOLS_WITH_CYTHON
     - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
-    - pytest -v Tests/
+    - pytest -vv Tests/
     # pyftmerge has no help option
     # pyftinspect requires gtk
 
