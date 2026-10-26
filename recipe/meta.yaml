@@ -1,13 +1,13 @@
 {% set name = "fonttools" %}
-{% set version = "4.66.1" %}
+{% set version = "4.67.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: dcb2ff59d87e63a9c0f0d618210cbac976540b348c04fbcf5b45497561fa8015
+  sha256: 0b48769c54c3c5d7d5df4104438c1486c12bde2fa182f73ab998d0bd3dc9ff85
 
 build:
   number: 0
@@ -92,7 +92,7 @@ test:
     - pyftsubset --help
     - echo $FONTTOOLS_WITH_CYTHON
     - python -c "from fontTools.cu2qu.cu2qu import COMPILED; assert COMPILED"
-    - pytest -v Tests/
+    - pytest -vv Tests/
     # pyftmerge has no help option
     # pyftinspect requires gtk
 
