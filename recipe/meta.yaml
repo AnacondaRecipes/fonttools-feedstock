@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.67.0" %}
+{% set version = "4.68.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 0b48769c54c3c5d7d5df4104438c1486c12bde2fa182f73ab998d0bd3dc9ff85
+  sha256: 1e3ba10c27088506768751740e3ae45769824b4d78eb37760b21c6e89ba57801
 
 build:
   number: 0
@@ -37,8 +37,8 @@ requirements:
     # lxml
     - lxml >=4.0
     # woff
-    - brotli-python >=1.0.1  # [python_impl == cpython]
-    - brotlicffi >=0.8.0  # [python_impl != cpython]
+    - brotli-python >=1.2.1  # [python_impl == cpython]
+    - brotlicffi >=1.2.1.0  # [python_impl != cpython]
     - zopfli >=0.1.4
     # unicode
     - unicodedata2 >=18.0.0  # [py<=315]
@@ -75,6 +75,7 @@ test:
     - fontTools.svgLib.path
     - fontTools.t1Lib
     - fontTools.ttLib
+    - fontTools.ttLib.beyond64k
     - fontTools.ttLib.tables
     - fontTools.ufoLib
     - fontTools.unicodedata
